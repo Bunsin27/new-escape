@@ -3,7 +3,7 @@ const posts = require('./controllers/posts');
 const comments = require('./controllers/comments');
 const { jwtAuth, postAuth, commentAuth } = require('./auth');
 const router = require('express').Router();
-
+const path = require("path")
 router.post('/login', users.validate(), users.login);
 router.post('/register', users.validate('register'), users.register);
 
@@ -26,7 +26,7 @@ module.exports = app => {
   app.use('/api', router);
 
   app.get('*', (req, res) => {
-    res.status(404).json({ message: 'not found' });
+    res.sendFile(path.join(__dirname, "../client/build/index.html"))
   });
 
   app.use((err, req, res, next) => {
