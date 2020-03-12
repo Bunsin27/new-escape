@@ -1,7 +1,9 @@
+require("dotenv").config();
+
 module.exports = {
   port: 8080,
   db: {
-    prod: process.env.DATABASE_URL || 'mongodb://localhost/forum',
+    prod: process.env.MONGODB_URI || 'mongodb://localhost/forum',
     // test: 'mongodb://localhost/forum_test',
     options: {
       useNewUrlParser: true,

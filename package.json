@@ -8,9 +8,10 @@
   },
   "scripts": {
     "dev": "nodemon ./index.js",
-    "build": "cd server/ && npm i && cd ../client/ && npm i && npm run build", 
+    "build": "cd server/ && npm i && cd ../client/ && npm i && npm run build",
     "start": "cd server/ && node index.js",
-    "test": "jest"
+    "test": "jest",
+    "run:locally": "cd server/ && npm i && cd ../client/ && npm i && npm run build cd .."
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -25,6 +26,7 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "faker": "^4.1.0",
     "jest": "^23.6.0",
     "nodemon": "^1.18.10",
