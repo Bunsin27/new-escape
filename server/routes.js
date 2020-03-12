@@ -26,16 +26,4 @@ module.exports = app => {
   app.use('/api', router);
   router.use(function (req, res) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
-  // app.get('*', (req, res) => {
-  //   res.sendFile(path.join(__dirname, "../client/build/index.html"))
-  // });
-
-  // app.use((err, req, res, next) => {
-  //   if (err.type === 'entity.parse.failed') {
-  //     return res.status(400).json({ message: 'bad request' });
-  //   }
-  //   next(err);
-  // });
-};
+})};
