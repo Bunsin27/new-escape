@@ -26,7 +26,7 @@ router.delete('/post/:post/:comment', [jwtAuth, commentAuth], comments.destroy);
 module.exports = app => {
   app.use('/api', router);
   app.use((req,res)=>{
-    res.sendFile(path.join(__dirname, "/client/build/public/index.html"))
+    res.sendFile(path.join(__dirname, "../client/build/index.html"))
   })
    app.use((err, req, res, next) => {
      if (err.type === 'entity.parse.failed') {
