@@ -4,9 +4,7 @@ const comments = require('./controllers/comments');
 const { jwtAuth, postAuth, commentAuth } = require('./auth');
 const router = require('express').Router();
 const path = require("path")
-router.use(function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-})
+
 router.post('/login', users.validate(), users.login);
 router.post('/register', users.validate('register'), users.register);
 
@@ -27,4 +25,13 @@ router.delete('/post/:post/:comment', [jwtAuth, commentAuth], comments.destroy);
 
 module.exports = app => {
   app.use('/api', router);
-  };
+  app.use((req,res)=>{
+    res.sendFile(path.join(__dirname, "../../client/build/public/index.html"))
+  })
+   app.use((err, req, res, next) => {
+     if (err.type === 'entity.parse.failed') {
+       return res.status(400).json({ message: 'bad request' });
+   }
+    next(err);
+  });
+};

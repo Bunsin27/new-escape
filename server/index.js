@@ -7,6 +7,7 @@ const connect = url => {
 };
 
 if (require.main === module) {
+  console.log(`App is running on port ${config.port}`)
   app.listen(config.port);
   connect(config.db.prod);
   mongoose.connection.on('error', console.log);
