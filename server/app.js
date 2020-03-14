@@ -7,7 +7,7 @@ const localStrategy = require('./auth/local');
 const jwtStrategy = require('./auth/jwt');
 
 const app = express();
-
+app.use(express.static("../client/build"))
 app.use(cors());
 app.use(express.json());
 app.use(expressValidator());
